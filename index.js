@@ -28,6 +28,7 @@
 var Q = require('q');
 var fs = require('fs');
 var phantomjs = require('phantomjs');
+		phantomjs.path = '/usr/local/bin/phantomjs';
 var portscanner = require('portscanner');
 var spawn = require('child_process').spawn;
 
@@ -57,7 +58,7 @@ var spawn = require('child_process').spawn;
  * ```javascript
  * "browsers": {
  *   "phantomjs": {
- *     "port": 5555 
+ *     "port": 5555
  *   }
  * }
  * ```
@@ -67,7 +68,7 @@ var spawn = require('child_process').spawn;
  * ```javascript
  * "browsers": {
  *   "phantomjs": {
- *     "portRange": [6100, 6120] 
+ *     "portRange": [6100, 6120]
  *   }
  * }
  * ```
@@ -78,7 +79,7 @@ var spawn = require('child_process').spawn;
  * ```javascript
  * "browsers": {
  *   "phantomjs": {
- *     "binary": "~/bin/phantomjs" 
+ *     "binary": "~/bin/phantomjs"
  *   }
  * }
  * ```
@@ -89,17 +90,17 @@ var spawn = require('child_process').spawn;
  * ```javascript
  * "browsers": {
  *   "phantomjs:1.9.1": {
- *     "binary": "~/bin/phantomjs" 
+ *     "binary": "~/bin/phantomjs"
  *   }
  * }
  * ```
  *
  * And then launch it like this:
- * 
+ *
  * ```bash
  * $ dalek mytest.js -b phantomjs:1.9.1
  * ```
- * 
+ *
  * @module DalekJS
  * @class PhantomJSDriver
  * @namespace Browser
@@ -277,7 +278,7 @@ var PhantomJSDriver = {
   /**
    * Checks if the def. port is blocked & if we need to switch to another port
    * Kicks off the process manager (for closing the opened browsers after the run has been finished)
-   * Also starts the chromedriver instance 
+   * Also starts the chromedriver instance
    *
    * @method _checkPorts
    * @param {object} deferred Promise
@@ -315,8 +316,8 @@ var PhantomJSDriver = {
 
   _launch: function (deferred, data) {
     var stream = data + '';
-    
-    // check if ghostdriver could be launched    
+
+    // check if ghostdriver could be launched
     if (stream.search('GhostDriver - Main - running') !== -1) {
       deferred.resolve();
     } else if (stream.search('Could not start Ghost Driver') !== -1) {
