@@ -1,10 +1,9 @@
 {
   "name": "dalek-browser-phantomjs",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "PhantomJS binding for DalekJS",
   "main": "./index.js",
   "dependencies": {
-    "phantomjs": "2.0.x",
     "q": "1.1.2",
     "portscanner": "1.0.0"
   },
